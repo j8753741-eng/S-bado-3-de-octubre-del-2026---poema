@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050505">
+
+<title>Mi Reina de los Suspiros Eternos 🐾</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 50% 15%, rgba(197,157,74,.12), transparent 30%),
+        radial-gradient(circle at 20% 80%, rgba(151,92,137,.08), transparent 30%),
+        #050505;
+    color:#ead9a6;
+    font-family:'Montserrat',sans-serif;
+    overflow-x:hidden;
+}
+
+/* Brillos flotantes */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255,220,130,.18) 0 1px, transparent 2px),
+        radial-gradient(circle at 80% 30%, rgba(255,220,130,.14) 0 1px, transparent 2px),
+        radial-gradient(circle at 30% 70%, rgba(255,220,130,.12) 0 1px, transparent 2px),
+        radial-gradient(circle at 90% 80%, rgba(255,220,130,.16) 0 1px, transparent 2px);
+    background-size:170px 190px,230px 220px,190px 240px,260px 200px;
+    animation:stars 9s linear infinite alternate;
+}
+
+@keyframes stars{
+    from{opacity:.45;}
+    to{opacity:1;}
+}
+
+/* Huellitas */
+.paw{
+    position:fixed;
+    color:rgba(218,180,91,.10);
+    font-size:32px;
+    pointer-events:none;
+    z-index:0;
+    animation:float 8s ease-in-out infinite;
+}
+
+.paw1{left:5%;top:12%;transform:rotate(-20deg);}
+.paw2{right:7%;top:25%;transform:rotate(18deg);animation-delay:2s;}
+.paw3{left:9%;bottom:22%;transform:rotate(15deg);animation-delay:4s;}
+.paw4{right:8%;bottom:10%;transform:rotate(-15deg);animation-delay:1s;}
+
+@keyframes float{
+    0%,100%{transform:translateY(0) rotate(15deg);}
+    50%{transform:translateY(-10px) rotate(8deg);}
+}
+
+/* Contenedor */
+.container{
+    position:relative;
+    z-index:2;
+    width:min(92%,720px);
+    margin:0 auto;
+    padding:55px 0 45px;
+}
+
+/* Encabezado */
+.header{
+    text-align:center;
+    margin-bottom:32px;
+}
+
+.cat-symbol{
+    font-size:42px;
+    margin-bottom:12px;
+    filter:drop-shadow(0 0 12px rgba(218,180,91,.45));
+    animation:catGlow 3s ease-in-out infinite;
+}
+
+@keyframes catGlow{
+    0%,100%{filter:drop-shadow(0 0 8px rgba(218,180,91,.25));}
+    50%{filter:drop-shadow(0 0 18px rgba(218,180,91,.65));}
+}
+
+.date{
+    font-size:10px;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:#a88d55;
+    margin-bottom:16px;
+}
+
+.title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(30px,7vw,54px);
+    line-height:1.05;
+    font-weight:600;
+    color:#f0d995;
+    text-shadow:
+        0 0 12px rgba(218,180,91,.25),
+        0 0 35px rgba(218,180,91,.08);
+}
+
+.line{
+    width:70px;
+    height:1px;
+    margin:23px auto 0;
+    background:linear-gradient(90deg,transparent,#d6b665,transparent);
+}
+
+/* Carta */
+.poem-card{
+    position:relative;
+    padding:36px 27px 38px;
+    border:1px solid rgba(214,182,101,.22);
+    border-radius:28px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(218,180,91,.018)
+        );
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.75),
+        inset 0 0 45px rgba(218,180,91,.025);
+    backdrop-filter:blur(7px);
+}
+
+/* Decoración felina */
+.ear{
+    position:absolute;
+    top:-1px;
+    width:24px;
+    height:24px;
+    border-top:1px solid rgba(218,180,91,.35);
+}
+
+.ear.left{
+    left:35px;
+    transform:skew(-25deg) rotate(45deg);
+}
+
+.ear.right{
+    right:35px;
+    transform:skew(25deg) rotate(-45deg);
+}
+
+.poem{
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    line-height:1.65;
+    color:#eee3c6;
+    text-align:center;
+}
+
+.poem .nickname{
+    color:#e4c777;
+    font-size:25px;
+    font-weight:600;
+    margin-bottom:25px;
+}
+
+.poem p{
+    margin-bottom:24px;
+}
+
+.poem .certainty{
+    color:#e7cc83;
+    font-size:22px;
+    margin:30px 0;
+}
+
+.poem .final{
+    color:#f0d995;
+    font-size:23px;
+    font-weight:500;
+    margin-top:28px;
+}
+
+.signature{
+    margin-top:34px;
+    padding-top:22px;
+    border-top:1px solid rgba(214,182,101,.16);
+    font-family:'Cormorant Garamond',serif;
+    font-size:21px;
+    letter-spacing:2px;
+    color:#d9ba70;
+}
+
+/* Huellitas internas */
+.trail{
+    text-align:center;
+    margin:25px 0 5px;
+    color:rgba(218,180,91,.35);
+    letter-spacing:13px;
+    font-size:13px;
+}
+
+/* Pie */
+.footer{
+    text-align:center;
+    margin-top:28px;
+    font-family:'Cormorant Garamond',serif;
+    color:rgba(218,180,91,.45);
+    font-size:16px;
+}
+
+.footer span{
+    display:block;
+    font-size:22px;
+    margin-bottom:7px;
+}
+
+/* Móvil */
+@media(max-width:600px){
+
+    .container{
+        width:91%;
+        padding:40px 0 35px;
+    }
+
+    .cat-symbol{
+        font-size:36px;
+    }
+
+    .date{
+        font-size:9px;
+        letter-spacing:3px;
+    }
+
+    .title{
+        font-size:34px;
+    }
+
+    .poem-card{
+        padding:30px 20px 32px;
+        border-radius:23px;
+    }
+
+    .poem{
+        font-size:18px;
+        line-height:1.62;
+    }
+
+    .poem .nickname{
+        font-size:23px;
+    }
+
+    .poem .certainty{
+        font-size:20px;
+    }
+
+    .poem .final{
+        font-size:21px;
+    }
+
+    .signature{
+        font-size:18px;
+        letter-spacing:1.5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="paw paw1">🐾</div>
+<div class="paw paw2">🐾</div>
+<div class="paw paw3">🐾</div>
+<div class="paw paw4">🐾</div>
+
+<main class="container">
+
+    <header class="header">
+
+        <div class="cat-symbol">🐈‍⬛</div>
+
+        <div class="date">
+            SÁBADO · 03 · OCTUBRE · 2026
+        </div>
+
+        <h1 class="title">
+            ✦ DONDE MI CORAZÓN<br>
+            TE ELIGE UNA Y OTRA VEZ ✦
+        </h1>
+
+        <div class="line"></div>
+
+    </header>
+
+    <section class="poem-card">
+
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+
+        <div class="poem">
+
+            <div class="nickname">
+                Mi Reina de los Suspiros Eternos,
+            </div>
+
+            <p>
+                Desde muy temprano dejé mi amor aquí,<br>
+                esperándote en silencio,<br>
+                como un beso escondido entre palabras<br>
+                que solo tú sabes encontrar.
+            </p>
+
+            <p>
+                No importa si llegas al despertar,<br>
+                si me encuentras cuando el sol ya está alto<br>
+                o cuando el día comienza a despedirse;<br>
+                quiero que al leerme sepas<br>
+                que desde temprano ya había un pedacito de mí<br>
+                esperándote.
+            </p>
+
+            <p>
+                Porque amarte no es solamente pensarte,<br>
+                es sentir que mi corazón se acelera<br>
+                cada vez que apareces en mis pensamientos,<br>
+                es querer acercarme a ti<br>
+                y quedarme perdido en tus ojos,<br>
+                en tu sonrisa,<br>
+                en esa forma tuya de hacerme sentir<br>
+                que no existe ningún otro lugar<br>
+                donde quisiera estar.
+            </p>
+
+            <p>
+                Tú eres esa clase de amor<br>
+                que no quiero vivir a medias.<br>
+                Quiero quererte con toda mi intensidad,<br>
+                con cada latido,<br>
+                con cada deseo,<br>
+                con cada parte de mí<br>
+                que alguna vez soñó con encontrar<br>
+                a alguien como tú.
+            </p>
+
+            <p>
+                Y si hoy solo pudiera dejarte una certeza,<br>
+                sería esta:
+            </p>
+
+            <p class="certainty">
+                te elegiría otra vez,<br>
+                te besaría otra vez,<br>
+                te amaría todavía más fuerte,<br>
+                y volvería a encontrarte<br>
+                en cualquier vida donde existieras.
+            </p>
+
+            <p class="final">
+                Porque entre millones de caminos,<br>
+                mi corazón siempre termina llegando a ti.
+            </p>
+
+            <div class="trail">
+                · 🐾 · 🐾 ·
+            </div>
+
+            <div class="signature">
+                VALERIA PETRO VILLAZÓN
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <span>🐾</span>
+        Mi amor te esperaba desde temprano.
+    </footer>
+
+</main>
+
+</body>
+  </html>
